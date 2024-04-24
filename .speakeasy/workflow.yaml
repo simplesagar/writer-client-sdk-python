@@ -1,0 +1,12 @@
+workflowVersion: 1.0.0
+sources:
+    my-source:
+        inputs:
+            - location: https://raw.githubusercontent.com/speakeasy-sdks/w-ai-openapi/main/openapi.yaml
+targets:
+    writer-python:
+        target: python
+        source: my-source
+        publish:
+            pypi:
+                token: $PYPI_TOKEN
