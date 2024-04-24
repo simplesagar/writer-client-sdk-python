@@ -41,4 +41,4 @@ if res.subscription_public_response_api is not None:
 | Error Object        | Status Code         | Content Type        |
 | ------------------- | ------------------- | ------------------- |
 | models.FailResponse | 400,401,403,404,500 | application/json    |
-| models.SDKError     | 4x-5xx              | */*                 |
+| models.SDKError     | 4xx-5xx             | */*                 |

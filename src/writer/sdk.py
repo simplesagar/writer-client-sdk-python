@@ -16,9 +16,11 @@ from .snippet import Snippet
 from .styleguide import Styleguide
 from .terminology import Terminology
 from .user import User
+from .utils.retries import RetryConfig
 from typing import Callable, Dict, Optional, Union
 from writer import models, utils
 from writer._hooks import SDKHooks
+from writer.models import internal
 
 class Writer:
     billing: Billing
@@ -59,7 +61,7 @@ class Writer:
                  server_url: Optional[str] = None,
                  url_params: Optional[Dict[str, str]] = None,
                  client: Optional[requests_http.Session] = None,
-                 retry_config: Optional[utils.RetryConfig] = None
+                 retry_config: Optional[RetryConfig] = None
                  ) -> None:
         """Instantiates the SDK configuring it with the provided parameters.
 
@@ -76,7 +78,7 @@ class Writer:
         :param client: The requests.Session HTTP client to use for all operations
         :type client: requests_http.Session
         :param retry_config: The utils.RetryConfig to use globally
-        :type retry_config: utils.RetryConfig
+        :type retry_config: RetryConfig
         """
         if client is None:
             client = requests_http.Session()
@@ -90,22 +92,17 @@ class Writer:
         if server_url is not None:
             if url_params is not None:
                 server_url = utils.template_url(server_url, url_params)
-        global_params = {
-            'parameters': {
-                'queryParam': {
-                },
-                'pathParam': {
-                    'organization_id': organization_id,
-                },
-            },
-        }
+    
+        _globals = internal.Globals(
+            organization_id=organization_id,
+        )
 
         self.sdk_configuration = SDKConfiguration(
             client,
+            _globals,
             security,
             server_url,
             server_idx,
-            global_params,
             retry_config=retry_config
         )
 
@@ -117,7 +114,7 @@ class Writer:
             self.sdk_configuration.server_url = server_url
 
         # pylint: disable=protected-access
-        self.sdk_configuration._hooks = hooks
+        self.sdk_configuration.__dict__['_hooks'] = hooks
 
         self._init_sdks()
 

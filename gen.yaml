@@ -13,7 +13,7 @@ generation:
   auth:
     oAuth2ClientCredentialsEnabled: false
 python:
-  version: 3.2.1
+  version: 3.3.0
   additionalDependencies:
     dependencies: {}
     extraDependencies:
@@ -34,4 +34,5 @@ python:
   maxMethodParams: 4
   outputModelSuffix: output
   packageName: writerai
+  projectUrls: {}
   responseFormat: envelope

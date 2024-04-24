@@ -5,7 +5,7 @@ from .sdkconfiguration import SDKConfiguration
 from enum import Enum
 from typing import Optional
 from writer import models, utils
-from writer._hooks import HookContext
+from writer._hooks import AfterErrorContext, AfterSuccessContext, BeforeRequestContext, HookContext
 
 class FetchFileAcceptEnum(str, Enum):
     APPLICATION_JSON = "application/json"
@@ -29,15 +29,21 @@ class DownloadTheCustomizedModel:
             organization_id=organization_id,
         )
         
+        _globals = models.FetchCustomizedModelFileGlobals(
+            organization_id=self.sdk_configuration.globals.organization_id,
+        )
+        
         base_url = utils.template_url(*self.sdk_configuration.get_server_details())
         
-        url = utils.generate_url(models.FetchCustomizedModelFileRequest, base_url, '/llm/organization/{organizationId}/model/{modelId}/customization/{customizationId}/fetch', request, self.sdk_configuration.globals)
+        url = utils.generate_url(base_url, '/llm/organization/{organizationId}/model/{modelId}/customization/{customizationId}/fetch', request, _globals)
         
         if callable(self.sdk_configuration.security):
             headers, query_params = utils.get_security(self.sdk_configuration.security())
         else:
             headers, query_params = utils.get_security(self.sdk_configuration.security)
         
+        headers = { **utils.get_headers(request, _globals), **headers }
+        query_params = { **utils.get_query_params(request, _globals), **query_params }
         if accept_header_override is not None:
             headers['Accept'] = accept_header_override.value
         else:
@@ -46,32 +52,31 @@ class DownloadTheCustomizedModel:
         client = self.sdk_configuration.client
         
         try:
-            req = self.sdk_configuration.get_hooks().before_request(
-                hook_ctx, 
-                requests_http.Request('GET', url, params=query_params, headers=headers).prepare(),
-            )
+            req = client.prepare_request(requests_http.Request('GET', url, params=query_params, headers=headers))
+            req = self.sdk_configuration.get_hooks().before_request(BeforeRequestContext(hook_ctx), req)
             http_res = client.send(req)
         except Exception as e:
-            _, e = self.sdk_configuration.get_hooks().after_error(hook_ctx, None, e)
-            raise e
+            _, e = self.sdk_configuration.get_hooks().after_error(AfterErrorContext(hook_ctx), None, e)
+            if e is not None:
+                raise e
 
         if utils.match_status_codes(['400','401','403','404','4XX','500','5XX'], http_res.status_code):
-            http_res, e = self.sdk_configuration.get_hooks().after_error(hook_ctx, http_res, None)
-            if e:
+            result, e = self.sdk_configuration.get_hooks().after_error(AfterErrorContext(hook_ctx), http_res, None)
+            if e is not None:
                 raise e
+            if result is not None:
+                http_res = result
         else:
-            result = self.sdk_configuration.get_hooks().after_success(hook_ctx, http_res)
-            if isinstance(result, Exception):
-                raise result
-            http_res = result
+            http_res = self.sdk_configuration.get_hooks().after_success(AfterSuccessContext(hook_ctx), http_res)
+            
         
         
-        res = models.FetchCustomizedModelFileResponse(status_code=http_res.status_code, content_type=http_res.headers.get('Content-Type'), raw_response=http_res, headers=None)
+        res = models.FetchCustomizedModelFileResponse(status_code=http_res.status_code, content_type=http_res.headers.get('Content-Type') or '', raw_response=http_res, headers=None)
         
         if http_res.status_code == 200:
             res.headers = http_res.headers
             
-            if utils.match_content_type(http_res.headers.get('Content-Type'), 'application/octet-stream'):                
+            if utils.match_content_type(http_res.headers.get('Content-Type') or '', 'application/octet-stream'):                
                 res.stream = http_res
             else:
                 content_type = http_res.headers.get('Content-Type')
@@ -79,7 +84,7 @@ class DownloadTheCustomizedModel:
         elif http_res.status_code in [400, 401, 403, 404, 500]:
             res.headers = http_res.headers
             
-            if utils.match_content_type(http_res.headers.get('Content-Type'), 'application/json'):                
+            if utils.match_content_type(http_res.headers.get('Content-Type') or '', 'application/json'):                
                 out = utils.unmarshal_json(http_res.text, models.FailResponse)
                 raise out
             else:
@@ -93,3 +98,4 @@ class DownloadTheCustomizedModel:
         return res
 
     
+
