@@ -8,6 +8,13 @@ from typing import Dict, List, Optional
 
 
 @dataclasses.dataclass
+class DeleteTermsGlobals:
+    organization_id: int = dataclasses.field(metadata={'path_param': { 'field_name': 'organizationId', 'style': 'simple', 'explode': False }})
+    
+
+
+
+@dataclasses.dataclass
 class DeleteTermsRequest:
     team_id: int = dataclasses.field(metadata={'path_param': { 'field_name': 'teamId', 'style': 'simple', 'explode': False }})
     x_request_id: Optional[str] = dataclasses.field(default=None, metadata={'header': { 'field_name': 'X-Request-ID', 'style': 'simple', 'explode': False }})

@@ -48,7 +48,7 @@ if res.page_with_section_response is not None:
 | Error Object        | Status Code         | Content Type        |
 | ------------------- | ------------------- | ------------------- |
 | models.FailResponse | 400,401,403,404,500 | application/json    |
-| models.SDKError     | 4x-5xx              | */*                 |
+| models.SDKError     | 4xx-5xx             | */*                 |
 
 ## list_pages
 
@@ -90,4 +90,4 @@ if res.paginated_result_page_public_api_response is not None:
 | Error Object        | Status Code         | Content Type        |
 | ------------------- | ------------------- | ------------------- |
 | models.FailResponse | 400,401,403,404,500 | application/json    |
-| models.SDKError     | 4x-5xx              | */*                 |
+| models.SDKError     | 4xx-5xx             | */*                 |

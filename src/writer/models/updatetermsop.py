@@ -9,6 +9,13 @@ from typing import Dict, List, Optional
 
 
 @dataclasses.dataclass
+class UpdateTermsGlobals:
+    organization_id: int = dataclasses.field(metadata={'path_param': { 'field_name': 'organizationId', 'style': 'simple', 'explode': False }})
+    
+
+
+
+@dataclasses.dataclass
 class UpdateTermsRequest1:
     update_terms_request: UpdateTermsRequest = dataclasses.field(metadata={'request': { 'media_type': 'application/json' }})
     team_id: int = dataclasses.field(metadata={'path_param': { 'field_name': 'teamId', 'style': 'simple', 'explode': False }})

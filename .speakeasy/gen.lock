@@ -3,25 +3,25 @@ id: c42e71b9-4aa9-47ee-ac21-777d77b21280
 management:
   docChecksum: 044ba6ea348a6fb8206cacad6926373d
   docVersion: "1.7"
-  speakeasyVersion: 1.207.1
-  generationVersion: 2.280.6
-  releaseVersion: 3.2.1
-  configChecksum: bcf81f5a0f8e1557d7431725e6714441
+  speakeasyVersion: 1.271.0
+  generationVersion: 2.312.1
+  releaseVersion: 3.3.0
+  configChecksum: 34a6ab31b9e17da88ddc6c234feb2c0b
   repoURL: https://github.com/writerai/writer-client-sdk-python.git
   repoSubDirectory: .
   installationURL: https://github.com/writerai/writer-client-sdk-python.git
   published: true
 features:
   python:
-    core: 4.5.1
+    core: 4.6.5
     devContainers: 2.86.0
     downloadStreams: 0.0.2
-    errors: 2.81.8
+    errors: 2.81.9
     flattening: 2.81.1
-    globalSecurity: 2.83.4
+    globalSecurity: 2.83.5
     globalServerURLs: 2.82.2
-    globals: 2.81.1
-    nameOverrides: 2.81.1
+    globals: 2.82.1
+    nameOverrides: 2.81.2
     responseFormat: 0.1.0
 generatedFiles:
   - src/writer/sdkconfiguration.py
@@ -145,7 +145,9 @@ generatedFiles:
   - src/writer/models/paginatedresult_userpublicresponse.py
   - src/writer/models/userpublicresponse.py
   - src/writer/models/security.py
+  - src/writer/models/internal/globals.py
   - src/writer/models/__init__.py
+  - src/writer/models/internal/__init__.py
   - docs/models/getsubscriptiondetailsresponse.md
   - docs/models/productname.md
   - docs/models/subscriptionpublicresponseapistatus.md
@@ -156,11 +158,13 @@ generatedFiles:
   - docs/models/metadata.md
   - docs/models/failresponse.md
   - docs/models/failmessage.md
+  - docs/models/detectcontentglobals.md
   - docs/models/detectcontentrequest.md
   - docs/models/detectcontentresponse.md
   - docs/models/label.md
   - docs/models/contentdetectorresponse.md
   - docs/models/contentdetectorrequest.md
+  - docs/models/contentcheckglobals.md
   - docs/models/contentcheckrequest.md
   - docs/models/contentcheckresponse.md
   - docs/models/processedcontent.md
@@ -168,65 +172,82 @@ generatedFiles:
   - docs/models/contentissue.md
   - docs/models/contentrequest.md
   - docs/models/contentsettings.md
+  - docs/models/contentcorrectglobals.md
   - docs/models/contentcorrectrequest.md
   - docs/models/contentcorrectresponse.md
   - docs/models/correctionresponse.md
+  - docs/models/generatecontentglobals.md
   - docs/models/generatecontentrequest.md
   - docs/models/generatecontentresponse.md
   - docs/models/draft.md
   - docs/models/generatetemplaterequest.md
   - docs/models/magicrequestinput.md
+  - docs/models/listtemplatesglobals.md
   - docs/models/listtemplatesrequest.md
   - docs/models/listtemplatesresponse.md
   - docs/models/templatedetailsresponse.md
   - docs/models/inputtype.md
   - docs/models/input.md
+  - docs/models/deletefileglobals.md
   - docs/models/deletefilerequest.md
   - docs/models/deletefileresponsebody.md
   - docs/models/deletefileresponse.md
+  - docs/models/getfileglobals.md
   - docs/models/getfilerequest.md
   - docs/models/getfileresponse.md
   - docs/models/modelfile.md
+  - docs/models/listfilesglobals.md
   - docs/models/listfilesrequest.md
   - docs/models/listfilesresponse.md
   - docs/models/modelfilesresponse.md
+  - docs/models/uploadfileglobals.md
   - docs/models/uploadfilerequest.md
   - docs/models/uploadfileresponse.md
   - docs/models/file.md
   - docs/models/uploadmodelfilerequest.md
+  - docs/models/listmodelsglobals.md
   - docs/models/listmodelsrequest.md
   - docs/models/listmodelsresponse.md
   - docs/models/generationmodelsresponse.md
   - docs/models/generationmodelinforesponsetype.md
   - docs/models/generationmodelinforesponse.md
+  - docs/models/createcompletionglobals.md
   - docs/models/createcompletionrequest.md
   - docs/models/createcompletionresponse.md
   - docs/models/completionresponse.md
   - docs/models/completiongenerationchoice.md
   - docs/models/completiongenerationchoicelogprobs.md
   - docs/models/completionrequest.md
+  - docs/models/createmodelcustomizationcompletionglobals.md
   - docs/models/createmodelcustomizationcompletionrequest.md
   - docs/models/createmodelcustomizationcompletionresponse.md
+  - docs/models/createmodelcustomizationglobals.md
   - docs/models/createmodelcustomizationrequest.md
   - docs/models/createmodelcustomizationresponse.md
   - docs/models/modelcustomization.md
   - docs/models/hyperparameters.md
   - docs/models/createcustomizationrequest.md
+  - docs/models/deletemodelcustomizationglobals.md
   - docs/models/deletemodelcustomizationrequest.md
   - docs/models/deletemodelcustomizationresponsebody.md
   - docs/models/deletemodelcustomizationresponse.md
+  - docs/models/getmodelcustomizationglobals.md
   - docs/models/getmodelcustomizationrequest.md
   - docs/models/getmodelcustomizationresponse.md
+  - docs/models/listmodelcustomizationsglobals.md
   - docs/models/listmodelcustomizationsrequest.md
   - docs/models/listmodelcustomizationsresponse.md
   - docs/models/customizationsresponse.md
+  - docs/models/fetchcustomizedmodelfileglobals.md
   - docs/models/fetchcustomizedmodelfilerequest.md
   - docs/models/fetchcustomizedmodelfileresponse.md
+  - docs/models/getdocumentdetailsglobals.md
   - docs/models/getdocumentdetailsrequest.md
   - docs/models/getdocumentdetailsresponse.md
   - docs/models/documentaccess.md
   - docs/models/document.md
   - docs/models/simpleuser.md
+  - docs/models/listteamdocumentsglobals.md
   - docs/models/listteamdocumentsqueryparamsortfield.md
   - docs/models/listteamdocumentsqueryparamsortorder.md
   - docs/models/listteamdocumentsrequest.md
@@ -235,9 +256,11 @@ generatedFiles:
   - docs/models/access.md
   - docs/models/briefdocument.md
   - docs/models/pagination.md
+  - docs/models/deletesnippetsglobals.md
   - docs/models/deletesnippetsrequest.md
   - docs/models/deletesnippetsresponse.md
   - docs/models/deleteresponse.md
+  - docs/models/findsnippetsglobals.md
   - docs/models/sortfield.md
   - docs/models/sortorder.md
   - docs/models/findsnippetsrequest.md
@@ -246,6 +269,7 @@ generatedFiles:
   - docs/models/snippetwithuser.md
   - docs/models/snippettagv2.md
   - docs/models/terminologyuser.md
+  - docs/models/updatesnippetsglobals.md
   - docs/models/updatesnippetsrequest.md
   - docs/models/updatesnippetsresponse.md
   - docs/models/snippetupdate.md
@@ -260,6 +284,7 @@ generatedFiles:
   - docs/models/paginatedresultpagepublicapiresponse.md
   - docs/models/status.md
   - docs/models/pagepublicapiresponse.md
+  - docs/models/addtermsglobals.md
   - docs/models/addtermsrequest.md
   - docs/models/addtermsresponse.md
   - docs/models/createtermsresponse.md
@@ -286,8 +311,10 @@ generatedFiles:
   - docs/models/termexamplecreatetype.md
   - docs/models/termexamplecreate.md
   - docs/models/approvedtermextensioncreate.md
+  - docs/models/deletetermsglobals.md
   - docs/models/deletetermsrequest.md
   - docs/models/deletetermsresponse.md
+  - docs/models/findtermsglobals.md
   - docs/models/partofspeech.md
   - docs/models/queryparamsortfield.md
   - docs/models/queryparamsortorder.md
@@ -295,6 +322,7 @@ generatedFiles:
   - docs/models/findtermsrequest.md
   - docs/models/findtermsresponse.md
   - docs/models/paginatedresultfulltermwithuser.md
+  - docs/models/updatetermsglobals.md
   - docs/models/updatetermsrequest1.md
   - docs/models/updatetermsresponse.md
   - docs/models/updatetermsrequestfailhandling.md
@@ -310,6 +338,7 @@ generatedFiles:
   - docs/models/accountstatus.md
   - docs/models/userpublicresponse.md
   - docs/models/security.md
+  - docs/models/internal/globals.md
   - docs/sdks/writer/README.md
   - docs/sdks/billing/README.md
   - docs/sdks/aicontentdetector/README.md

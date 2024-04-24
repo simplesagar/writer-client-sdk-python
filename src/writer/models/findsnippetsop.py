@@ -7,6 +7,13 @@ from .paginatedresult_snippetwithuser import PaginatedResultSnippetWithUser
 from enum import Enum
 from typing import Dict, List, Optional
 
+
+@dataclasses.dataclass
+class FindSnippetsGlobals:
+    organization_id: int = dataclasses.field(metadata={'path_param': { 'field_name': 'organizationId', 'style': 'simple', 'explode': False }})
+    
+
+
 class SortField(str, Enum):
     SHORTCUT = 'shortcut'
     CREATION_TIME = 'creationTime'

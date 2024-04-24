@@ -51,7 +51,7 @@ if res.object is not None:
 | Error Object        | Status Code         | Content Type        |
 | ------------------- | ------------------- | ------------------- |
 | models.FailResponse | 400,401,403,404,500 | application/json    |
-| models.SDKError     | 4x-5xx              | */*                 |
+| models.SDKError     | 4xx-5xx             | */*                 |
 
 ## get
 
@@ -92,7 +92,7 @@ if res.model_file is not None:
 | Error Object        | Status Code         | Content Type        |
 | ------------------- | ------------------- | ------------------- |
 | models.FailResponse | 400,401,403,404,500 | application/json    |
-| models.SDKError     | 4x-5xx              | */*                 |
+| models.SDKError     | 4xx-5xx             | */*                 |
 
 ## list
 
@@ -132,7 +132,7 @@ if res.model_files_response is not None:
 | Error Object        | Status Code         | Content Type        |
 | ------------------- | ------------------- | ------------------- |
 | models.FailResponse | 400,401,403,404,500 | application/json    |
-| models.SDKError     | 4x-5xx              | */*                 |
+| models.SDKError     | 4xx-5xx             | */*                 |
 
 ## upload
 
@@ -178,4 +178,4 @@ if res.model_file is not None:
 | Error Object        | Status Code         | Content Type        |
 | ------------------- | ------------------- | ------------------- |
 | models.FailResponse | 400,401,403,404,500 | application/json    |
-| models.SDKError     | 4x-5xx              | */*                 |
+| models.SDKError     | 4xx-5xx             | */*                 |

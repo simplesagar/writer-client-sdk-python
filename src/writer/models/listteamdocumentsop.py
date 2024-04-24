@@ -7,6 +7,13 @@ from .briefdocuments import BriefDocuments
 from enum import Enum
 from typing import Dict, List, Optional
 
+
+@dataclasses.dataclass
+class ListTeamDocumentsGlobals:
+    organization_id: int = dataclasses.field(metadata={'path_param': { 'field_name': 'organizationId', 'style': 'simple', 'explode': False }})
+    
+
+
 class ListTeamDocumentsQueryParamSortField(str, Enum):
     TITLE = 'title'
     CREATION_TIME = 'creationTime'

@@ -7,6 +7,13 @@ from typing import Dict, List, Optional
 
 
 @dataclasses.dataclass
+class FetchCustomizedModelFileGlobals:
+    organization_id: int = dataclasses.field(metadata={'path_param': { 'field_name': 'organizationId', 'style': 'simple', 'explode': False }})
+    
+
+
+
+@dataclasses.dataclass
 class FetchCustomizedModelFileRequest:
     customization_id: str = dataclasses.field(metadata={'path_param': { 'field_name': 'customizationId', 'style': 'simple', 'explode': False }})
     model_id: str = dataclasses.field(metadata={'path_param': { 'field_name': 'modelId', 'style': 'simple', 'explode': False }})

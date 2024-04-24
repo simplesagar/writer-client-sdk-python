@@ -8,6 +8,13 @@ from typing import Dict, List, Optional
 
 
 @dataclasses.dataclass
+class ListModelsGlobals:
+    organization_id: int = dataclasses.field(metadata={'path_param': { 'field_name': 'organizationId', 'style': 'simple', 'explode': False }})
+    
+
+
+
+@dataclasses.dataclass
 class ListModelsRequest:
     organization_id: Optional[int] = dataclasses.field(default=None, metadata={'path_param': { 'field_name': 'organizationId', 'style': 'simple', 'explode': False }})
     

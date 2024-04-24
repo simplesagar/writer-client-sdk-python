@@ -9,6 +9,13 @@ from typing import Dict, List, Optional
 
 
 @dataclasses.dataclass
+class DetectContentGlobals:
+    organization_id: int = dataclasses.field(metadata={'path_param': { 'field_name': 'organizationId', 'style': 'simple', 'explode': False }})
+    
+
+
+
+@dataclasses.dataclass
 class DetectContentRequest:
     content_detector_request: ContentDetectorRequest = dataclasses.field(metadata={'request': { 'media_type': 'application/json' }})
     organization_id: Optional[int] = dataclasses.field(default=None, metadata={'path_param': { 'field_name': 'organizationId', 'style': 'simple', 'explode': False }})

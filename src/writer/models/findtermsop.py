@@ -7,6 +7,13 @@ from .paginatedresult_fulltermwithuser import PaginatedResultFullTermWithUser
 from enum import Enum
 from typing import Dict, List, Optional
 
+
+@dataclasses.dataclass
+class FindTermsGlobals:
+    organization_id: int = dataclasses.field(metadata={'path_param': { 'field_name': 'organizationId', 'style': 'simple', 'explode': False }})
+    
+
+
 class PartOfSpeech(str, Enum):
     NOUN = 'noun'
     VERB = 'verb'

@@ -176,7 +176,7 @@ Handling errors in this SDK should largely match your expectations.  All operati
 | Error Object        | Status Code         | Content Type        |
 | ------------------- | ------------------- | ------------------- |
 | models.FailResponse | 400,401,403,404,500 | application/json    |
-| models.SDKError     | 4x-5xx              | */*                 |
+| models.SDKError     | 4xx-5xx             | */*                 |
 
 ### Example
 
@@ -277,7 +277,7 @@ import requests
 
 http_client = requests.Session()
 http_client.headers.update({'x-custom-header': 'someValue'})
-s = writer.Writer(client: http_client)
+s = writer.Writer(client=http_client)
 ```
 <!-- End Custom HTTP Client [http-client] -->
 
