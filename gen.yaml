@@ -35,4 +35,4 @@ python:
   outputModelSuffix: output
   packageName: writerai
   projectUrls: {}
-  responseFormat: envelope
+  responseFormat: flat
